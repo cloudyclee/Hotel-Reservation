@@ -1,0 +1,335 @@
+* {
+  font-family: 'Noto Sans TC', sans-serif;
+  font-size: 0px;
+  position: relative;
+}
+
+html, body {
+  padding: 0px;
+  margin: 0px;
+  width: 100%;
+}
+
+.loading {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: #000;
+  z-index: 20;
+}
+
+.loading .loader-inner {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+}
+
+.loading_fade_out {
+  -webkit-transition-duration: 3s;
+          transition-duration: 3s;
+  opacity: 0;
+  background-color: transparent;
+  z-index: 0;
+}
+
+.show {
+  -webkit-transition: opacity 0.5s;
+  transition: opacity 0.5s;
+  -webkit-transition: -webkit-transform 0.5s;
+  transition: -webkit-transform 0.5s;
+  transition: transform 0.5s;
+  transition: transform 0.5s, -webkit-transform 0.5s;
+}
+
+.container {
+  width: 100%;
+  height: 800px;
+  overflow: hidden;
+}
+
+img:not(.show_img):not(.room4) {
+  opacity: 0;
+  -webkit-transition: opacity 1s;
+  transition: opacity 1s;
+}
+
+.show_img {
+  opacity: 1;
+}
+
+.room1 {
+  position: absolute;
+  width: 100%;
+  background-size: cover;
+  z-index: -10;
+  -webkit-transform: rotateX(180deg);
+          transform: rotateX(180deg);
+}
+
+.room2 {
+  position: absolute;
+  top: -54vw;
+  width: 100%;
+  background-size: cover;
+  z-index: -10;
+  -webkit-transform: rotateY(180deg);
+          transform: rotateY(180deg);
+}
+
+.room3 {
+  position: absolute;
+  top: -52vw;
+  width: 100%;
+  background-size: cover;
+  z-index: -10;
+  -webkit-transform: rotateY(180deg);
+          transform: rotateY(180deg);
+}
+
+.room4 {
+  position: absolute;
+  top: -13vw;
+  width: 100%;
+  min-height: 800px;
+  background-size: cover;
+  z-index: -10;
+  opacity: 1;
+  -webkit-transition: opacity 1s;
+  transition: opacity 1s;
+}
+
+.room5 {
+  position: absolute;
+  top: -33vw;
+  width: 100%;
+  background-size: cover;
+  z-index: -10;
+  -webkit-transform: rotateY(180deg);
+          transform: rotateY(180deg);
+}
+
+.room6 {
+  position: absolute;
+  top: -65vw;
+  width: 100%;
+  background-size: cover;
+  z-index: -10;
+  -webkit-transform: rotateY(180deg);
+          transform: rotateY(180deg);
+}
+
+.logo {
+  width: 162px;
+  height: 163px;
+  position: absolute;
+  left: 4.5%;
+  top: 5.9%;
+  -webkit-transform: translateX(-50px);
+          transform: translateX(-50px);
+  opacity: 0;
+}
+
+.logo img {
+  width: 100%;
+  height: 100%;
+}
+
+.title {
+  position: absolute;
+  left: 5.7%;
+  top: 75.3%;
+  -webkit-transform: translateX(-50px);
+          transform: translateX(-50px);
+  opacity: 0;
+}
+
+.title .no {
+  position: absolute;
+  left: 4px;
+  width: 73px;
+  height: 98px;
+  font-weight: 400;
+  font-size: 66px;
+  color: #FFFFFF;
+  z-index: 5;
+}
+
+.title .bar1 {
+  position: absolute;
+  top: 69px;
+  width: 86px;
+  height: 19px;
+  overflow: hidden;
+  background-color: rgba(255, 255, 255, 0.3);
+  background-image: linear-gradient(45deg, #fff 0% 5%, transparent 5% 45%, #fff 45% 55%, transparent 55% 95%, #fff 95% 100%);
+  background-size: 10px 10px;
+}
+
+.title .name {
+  position: absolute;
+  left: 4px;
+  top: 92px;
+  width: 280px;
+  height: 36px;
+  font-size: 24px;
+  font-weight: 400;
+  color: #FFFFFF;
+  letter-spacing: 2.51px;
+}
+
+.room_list {
+  position: absolute;
+  top: 6.1%;
+  left: 75.3%;
+  -webkit-transform: translateX(100px);
+          transform: translateX(100px);
+  opacity: 0.4;
+}
+
+.room_list .rooms {
+  position: absolute;
+  width: 1000px;
+  height: 404px;
+  background-color: #fff;
+  padding: 0px;
+}
+
+.room_list .rooms li:nth-child(1) {
+  padding-top: 37px;
+}
+
+.room_list .rooms li {
+  list-style: none;
+  padding-left: 34px;
+  padding-top: 18px;
+  padding-bottom: 19px;
+  font-weight: 300;
+  font-size: 14px;
+  color: #000000;
+  letter-spacing: 1.46px;
+  -webkit-transition-duration: 0.3s;
+          transition-duration: 0.3s;
+  cursor: pointer;
+}
+
+.room_list .rooms li:hover::before {
+  content: "";
+  position: absolute;
+  left: 0px;
+  top: calc(100% - 29px);
+  border-top: solid 1px #000;
+  width: 23px;
+}
+
+.room_list .bar2 {
+  position: absolute;
+  top: 404px;
+  left: 27px;
+  width: 400px;
+  height: 20px;
+  overflow: hidden;
+  background-color: rgba(255, 255, 255, 0.3);
+  background-image: linear-gradient(45deg, #fff 0% 5%, transparent 5% 45%, #fff 45% 55%, transparent 55% 95%, #fff 95% 100%);
+  background-size: 10px 10px;
+}
+
+.infos {
+  position: absolute;
+  left: 77.3%;
+  top: 71.5%;
+  -webkit-transform: translateX(100px);
+          transform: translateX(100px);
+  opacity: 0.4;
+}
+
+.infos .fb {
+  position: absolute;
+  left: 2px;
+  background-image: url("../index_icon/facebook-square-brands.svg");
+  background-size: 100% 100%;
+  width: 20px;
+  height: 21px;
+}
+
+.infos .ig {
+  position: absolute;
+  left: 32px;
+  background-image: url("../index_icon/instagram-brands.svg");
+  background-size: 100% 100%;
+  width: 20px;
+  height: 20px;
+}
+
+.infos .tel {
+  position: absolute;
+  left: 32px;
+  top: 60px;
+  width: 200px;
+  font-weight: 400;
+  font-size: 14px;
+  color: #FFFFFF;
+  letter-spacing: 1px;
+}
+
+.infos .tel::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: -30px;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+  background-image: url("../index_icon/phone-alt-solid.svg");
+  background-size: 100% 100%;
+  width: 19px;
+  height: 19px;
+}
+
+.infos .email {
+  position: absolute;
+  left: 32px;
+  top: 93px;
+  width: 200px;
+  font-weight: 400;
+  font-size: 14px;
+  color: #FFFFFF;
+}
+
+.infos .email::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: -30px;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+  background-image: url("../index_icon/envelope-solid.svg");
+  background-size: 100% 100%;
+  width: 19px;
+  height: 19px;
+}
+
+.infos .address {
+  position: absolute;
+  left: 32px;
+  top: 129px;
+  width: 200px;
+  font-weight: 400;
+  font-size: 14px;
+  color: #FFFFFF;
+  letter-spacing: 1px;
+}
+
+.infos .address::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: -32px;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+  background-image: url("../index_icon/home-solid.svg");
+  background-size: 100% 100%;
+  width: 22px;
+  height: 17px;
+}
+/*# sourceMappingURL=style.css.map */

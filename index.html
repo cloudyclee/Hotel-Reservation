@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./dist/style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@100;300;400;500;700;900&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/loaders.css/0.1.2/loaders.min.css">
+    <script src="https://unpkg.com/vue@next"></script>
+    <title>White Space</title>
+</head>
+<body>
+    <div class="loading">
+        <div class="loader-inner ball-spin-fade-loader"></div>
+    </div>
+    <div id="app">
+        <div class="container">
+            <img class="room1" data-num="0" src="https://images.unsplash.com/photo-1526880792616-4217886b9dc2?ixlib=rb-1.2.1&amp;auto=format&amp;fit=crop&amp;w=1950&amp;q=80" alt="room1"/>
+            <img class="room2" data-num="1" src="https://images.unsplash.com/photo-1558211583-03ed8a0b3d5f?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=2134&amp;q=80" alt="room2"/>
+            <img class="room3" data-num="2" src="https://images.unsplash.com/photo-1526913621366-a4583840d736?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=1950&amp;q=80" alt="room3"/>
+            <img class="room4" data-num="3" src="https://images.unsplash.com/photo-1519974719765-e6559eac2575?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=1950&amp;q=80" alt="room4"/>
+            <img class="room5" data-num="4" src="https://images.unsplash.com/photo-1521783593447-5702b9bfd267?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=2021&amp;q=80" alt="room5"/>
+            <img class="room6" data-num="5" src="https://images.unsplash.com/photo-1552902019-ebcd97aa9aa0?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=2134&amp;q=80" alt="room6"/>
+            <div class="logo show">
+                <img class="show_img" src="./index_icon/logo_white.svg" alt="logo">
+            </div>
+            <div class="title show">
+                <div class="no">0{{ room.index+1}}</div>
+                    <div class="bar1"></div>
+                <div class="name">{{ room.name }}</div>
+            </div>
+            <div class="room_list show">
+                <ul class="rooms">
+                    <li v-for="(item, id) in rooms" v-bind:data-id="id">
+                        {{ item.name}}
+                    </li>
+                </ul>
+                <div class="bar2"></div>
+            </div>
+            <div class="infos show">
+                <div class="fb"></div>
+                <div class="ig"></div>
+                <div class="tel">02-17264937</div>
+                <div class="email">whitespace@whitespace.com.tw</div>
+                <div class="address">台北市羅斯福路十段30號</div>
+            </div>
+        </div>
+    </div>
+    <script src="https://unpkg.com/vue@next"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/loaders.css/0.1.2/loaders.css.js"></script>
+    <script src="./all.js"></script>
+</body>
+</html>
