@@ -5,13 +5,13 @@ var data;
 var single_room_data;
 
 const vm = Vue.createApp({
-  data () {
-    return {
-      rooms: data,
-      room: {index: 3, id: data[3].id, name: data[3].name},
-      now_room: 4
+    data () {
+        return {
+            rooms: data,
+            room: {index: 3, id: data[3].id, name: data[3].name},
+            now_room: 4
+        }
     }
-  }
 });
 
 var xhr = new XMLHttpRequest();

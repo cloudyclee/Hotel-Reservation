@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@100;300;400;500;700;900&display=swap">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/loaders.css/0.1.2/loaders.min.css">
     <script src="https://unpkg.com/vue@next"></script>
-    <title>White Space</title>
+    <title>Home | White Space</title>
 </head>
 <body>
     <div class="loading">
@@ -26,14 +26,16 @@
                 <img class="show_img" src="./index_icon/logo_white.svg" alt="logo">
             </div>
             <div class="title show">
-                <div class="no">0{{ room.index+1}}</div>
+                <div class="no">0{{ room.index+1 }}</div>
                     <div class="bar1"></div>
                 <div class="name">{{ room.name }}</div>
             </div>
             <div class="room_list show">
                 <ul class="rooms">
                     <li v-for="(item, id) in rooms" v-bind:data-id="id">
-                        {{ item.name}}
+                        <a :href="'room.html?room_id=' + item.id + '&room_name=' + item.name">
+                            {{ item.name }}
+                        </a>
                     </li>
                 </ul>
                 <div class="bar2"></div>
