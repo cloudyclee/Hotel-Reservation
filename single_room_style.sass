@@ -1,5 +1,4 @@
 *
-    //outline: solid 1px black
     font-family: 'Noto Sans TC', sans-serif
     font-size: 0px
     position: relative
@@ -10,6 +9,10 @@ html, body
     width: 100%
     height: 100%
     overflow: hidden
+
+.col-12, .col-md-4, .col-md-6, .col-md-2
+    padding-left: 0px
+    padding-right: 0px
 
 .loading
     position: absolute
@@ -51,7 +54,7 @@ html, body
         z-index: 40
         .pre
             display: inline-block
-            margin-right: 350px
+            margin-right: 30%
             font-size: 100px
             height: 150px
             width: 81px
@@ -66,7 +69,7 @@ html, body
                 color: #666   
         .next
             display: inline-block
-            margin-left: 350px
+            margin-left: 30%
             font-size: 100px
             height: 150px
             width: 81px
@@ -120,6 +123,7 @@ html, body
         top: 50%
         transform: translate(-50%, -50%)
         width: 35.3%
+        min-width: 350px
         height: auto
         background: #FFFFFF
         box-shadow: 0px 2px 4px 0px rgba(0,0,0,0.50)
@@ -160,6 +164,7 @@ html, body
         letter-spacing: 1.46px
         border: 1px solid #C9C9C9
         border-radius: 5px
+        padding: 2px 5px
         &:focus
             border: 1px solid #C9C9C9
             outline: none
@@ -167,6 +172,21 @@ html, body
         font-size: 14px
         color: #000000
         letter-spacing: 1.46px
+    .warn
+        font-size: 10px
+        color: #ff5c5c
+        margin-top: 14px
+        margin-bottom: 13px
+        margin-left: 32.4%
+    .warn_name
+        display: none
+    .warn_tel
+        display: none
+    .warn_correct_tel
+        display: none
+    .warn_date
+        display: none
+        margin-top: 56px
     #reserv_start
         width: calc(74.4% - 53px)
         user-select: none
@@ -177,7 +197,7 @@ html, body
         user-select: none
         cursor: pointer
     .output
-        margin-top: 54px
+        margin-top: 65px
         .night_num
             background-color: #EDEDED
             padding: 15px 10%
@@ -211,6 +231,7 @@ html, body
         user-select: none
         cursor: pointer
         transition-duration: 0.2s
+        border: none
         &:active
             transform: translate(2px, 2px)
     .message
@@ -237,10 +258,15 @@ html, body
         margin-right: 15%
         float: right
         color: #FFFFFF
-        background-color: #484848 
+        background-color: #484848
+        cursor: default
+        &:focus
+            border: none
+            outline: none
+    .operable
+        cursor: pointer
         &:hover
-            color: #6D7278
-            background-color: #ADE8C6
+            background-color: #FF3B3B
     .loading_frame
         .loader-reserv
             left: 50%
@@ -255,25 +281,42 @@ html, body
                 width: 10px
                 height: 10px
 
-.logo
-    position: absolute
-    width: 171px
-    height: 54px
-    left: 4.1%
-    top: 32px
-    z-index: 10
-    img
-        width: 100%
-        height: 100%
+.navibar
+    position: fixed
+    width: 100%
+    padding-left: 0px
+    padding-top: 0px
+    padding-bottom: 0px
+    background-color: rgba(#FFF, 0)
+    z-index: 15
+    .logo
+        //position: absolute
+        display: block
+        width: 171px
+        height: 54px
+        left: 4.1%
+        margin-top: 16px
+        margin-bottom: 16px
+        //top: 32px
+        z-index: 10
+        img
+            width: 100%
+            height: 100%
 
 .pics
     width: 100%
-    height: 569px
+    height: 53vw
+    //max-height: 596px
     overflow: hidden
     .pic
         display: inline-block
         overflow: hidden
         cursor: pointer
+        width: 100%
+        height: 100%
+        background-size: cover
+        background-repeat: no-repeat
+        background-position-y: bottom
         &::before
             content: ""
             position: absolute
@@ -283,20 +326,6 @@ html, body
             z-index: 10
             opacity: 1
             transition-duration: 0.5s
-    .pic_shadow
-        &::before
-            content: ""
-            position: absolute
-            width: 100%
-            height: 100%
-            background-color: rgba(#000, 0.5)
-            z-index: 10
-            opacity: 1
-            transition-duration: 0.5s
-        &:hover
-            &::before
-                opacity: 0
-              
     .pic:nth-child(1)
         width: 70.3%
         height: 100%
@@ -318,8 +347,19 @@ html, body
         display: inline-block
         overflow: hidden
         opacity: 0
-        //transition-duration: 1s
         cursor: pointer
+        &::before
+            content: ""
+            position: absolute
+            width: 100%
+            height: 100%
+            background-color: rgba(#000, 0.5)
+            z-index: 10
+            opacity: 1
+            transition-duration: 0.5s
+        &:hover
+            &::before
+                opacity: 0
     .pic_shadow:nth-child(4)
         position: absolute
         left: 0px
@@ -336,12 +376,9 @@ html, body
         width: 29.7%
         height: 50%
 
-.container
+.content-box
     padding-left: 5.2%
     padding-top: 47px
-    width: 40.1%
-    display: inline-block
-    vertical-align: top
     span
         font-size: initial
         display: block
@@ -412,10 +449,9 @@ html, body
             flex-wrap: wrap
             align-content: space-around
             padding-top: 21px
-            
             li
                 list-style: none
-                width: calc(27.6% - 14px)
+                width: 33%
                 padding-left: 5.4%
                 margin-bottom: 33px
                 img
@@ -435,10 +471,10 @@ html, body
                 opacity: 0.3
 
 .price
-    display: inline-block
-    width: 10.8%
+    //display: inline-block
+    //width: 10.8%
     margin-top: 65px
-    padding-left: 3.2%
+    //padding-left: 3.2%
     padding-right: 3.1%
     vertical-align: top
     span
@@ -463,16 +499,62 @@ html, body
         height: 27px
 
 .reservation
-    display: inline-block
-    vertical-align: top
+    //display: inline-block
+    //vertical-align: top
     margin-top: 49px
-    width: 31.9%
+    //width: 31.9%
+    padding-right: 5.75%
+    .explain
+        margin-top: 26px
+        text-align: center
+        span
+            font-weight: 300
+            font-size: 10px
+            color: #000
+    .buttons
+        display: flex
+        justify-content: space-between
+        align-items: center       
+    .button
+        display: inline-block
+        margin-top: 26px
+        width: 118px
+        height: 53px
+        background-color: #575757
+        font-weight: 400
+        font-size: 16px
+        color: #fff
+        letter-spacing: 1.67px
+        text-align: center
+        line-height: 53px
+        cursor: pointer
+        user-select: none
+        transition-duration: 0.1s
+        &::before
+            position: absolute
+            content: ""
+            width: 118px
+            height: 53px
+            background-image: linear-gradient(45deg,#575757 0% 5%,transparent 5% 45%,#575757 45% 55%,transparent 55% 95%,#575757 95% 100%)
+            background-size: 5px 5px
+            left: 6px
+            top: 8px
+            z-index: -5
+        &:hover
+            background-color: #373737
+            &::before
+                background-size: 3px 3px
+        &:active
+            transform: translate(3px, 3px)
     .calendar
-        height: 390px
         background: #F7F7F7
         box-shadow: 0px 2px 10px 0px rgba(#000,0.15)
         text-align: center
         padding-bottom: 16px
+        &::after
+            content: ""
+            display: block
+            clear: both
         .title
             padding-top: 30px
             padding-bottom: 19px
@@ -514,11 +596,15 @@ html, body
                     text-align: center
                     vertical-align: middle
                     user-select: none
-                .days_past, .days_not_selectable
+                .days_past
                     color: #C9CCD0
                     font-size: 14px
                     letter-spacing: 1.46px
+                    text-decoration: none !important
                 .days_not_selectable
+                    color: #6D7278
+                    font-size: 14px
+                    letter-spacing: 1.46px
                     text-decoration: line-through
                 .days_non_past
                     color: #6D7278
@@ -533,42 +619,59 @@ html, body
                 .selectDay
                     background-image: linear-gradient(45deg,#575757 0% 5%,transparent 5% 45%,#575757 45% 55%,transparent 55% 95%,#575757 95% 100%)
                     background-size: 5px 5px
-    .buttons
-        display: flex
-        justify-content: space-between
-        align-items: center       
-    .button
-        display: inline-block
-        margin-top: 26px
-        width: 118px
-        height: 53px
-        background-color: #575757
-        font-weight: 400
-        font-size: 16px
-        color: #fff
-        letter-spacing: 1.67px
-        text-align: center
-        line-height: 53px
-        cursor: pointer
-        user-select: none
-        transition-duration: 0.1s
-        &::before
-            position: absolute
-            content: ""
-            width: 118px
-            height: 53px
-            background-image: linear-gradient(45deg,#575757 0% 5%,transparent 5% 45%,#575757 45% 55%,transparent 55% 95%,#575757 95% 100%)
-            background-size: 5px 5px
-            left: 6px
-            top: 8px
-            z-index: -5
-        &:hover
-            background-color: #373737
-            &::before
-                background-size: 3px 3px
-        &:active
-            transform: translate(3px, 3px)
-    #reset
 
 
-        
+@media screen and (max-width: 1140px)
+    .content-box
+        .detail
+            ul
+                padding-top: 33px
+                li
+                    width: 50%
+                    padding-left: 9.7%
+
+@media screen and (max-width: 992px)
+    .content-box
+        padding-right: 5.2%
+    .reservation
+        .reserv_wrap
+            display: flex
+            flex-direction: column
+            align-items: center
+            padding-right: 0px
+            margin-bottom: 72px
+            clear: both
+        .price
+            float: right
+            margin-top: 15px
+            margin-bottom: 30px
+            padding-right: 0px
+            vertical-align: initial
+        .buttons
+            width: 100%
+            
+@media screen and (max-width: 768px)
+    .content-box
+        .title
+            display: inline-block
+        .price
+            float: right
+            margin-top: 15px
+            padding-right: 0px
+            vertical-align: initial
+        .detail
+            margin-bottom: 60px
+            ul
+                li
+                    width: 33%
+                    padding-left: 5.4%
+    .reservation
+        margin-top: 0px
+        padding-right: 0px
+        h3
+            font-size: 30px
+            font-weight: 300
+            letter-spacing: 3.13px
+            margin-bottom: 36px
+        .buttons, .calendar
+            width: 65%

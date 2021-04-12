@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@100;300;400;500;700;900&display=swap">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/loaders.css/0.1.2/loaders.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="./dist/single_room_style.css">
     <title></title>
 </head>
@@ -38,18 +39,22 @@
                     </div>
                     <div class="reserv_body">
                         <label for="name">姓名
-                            <input id="user_name" type="text" required>
+                            <input id="user_name" type="text" placeholder="請填寫真實姓名">
                         </label>
+                        <div class="warn warn_name">姓名不可空白</div>
                         <br>
                         <label for="tel">電話
-                            <input id="tel" type="text" required>
+                            <input id="tel" type="text" placeholder="範例：0912345678">
                         </label>
+                        <div class="warn warn_tel">電話不可空白</div>
+                        <div class="warn warn_correct_tel">請輸入正確電話</div>
                         <br>
                         <label for="reserv_date">預約起訖
-                            <input id="reserv_start" type="date" required>
+                            <input id="reserv_start" type="date">
                             <br>
-                            <input id="reserv_end" type="date" required>
+                            <input id="reserv_end" type="date">
                         </label>
+                        <div class="warn warn_date">未選擇開始日期或結束日期</div>
                         <div class="output">
                             <div class="night_num">
                                 <span>平日時段<span class="normal">1夜</span></span>
@@ -60,7 +65,7 @@
                         </div>
                     </div>
                     <div class="cancel">取消</div>
-                    <div id="submit" class="confirm">確定預約</div>
+                    <button id="submit" class="confirm" disabled>確定預約
                 </div>
                 <div class="success_frame" v-if="status == 'success'">
                     <div class="title">預約成功</div>
@@ -74,7 +79,7 @@
                             <img src="./index_icon/success.svg" alt="success">
                         </div>    
                     </div>
-                    <div class="return_page">回頁面</div>
+                    <div id="success" class="return_page operable">回頁面</div>
                 </div>
                 <div class="fail_frame" v-if="status == 'fail'">
                     <div class="title">預約失敗</div>
@@ -90,7 +95,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="return_page">返回</div>
+                    <div class="return_page operable">返回</div>
                 </div>
                 <div class="loading_frame" v-if="status == 'loading'">
                     <div class="title">預約中</div>
@@ -98,90 +103,106 @@
                 </div>
             </div>
         </div>
-        <div class="logo">
-            <img src="./index_icon/logo_block.svg" alt="logo">
+        <div class="navibar">
+            <a class="logo" href="./index.html">
+                <img src="./index_icon/logo_block.svg" alt="logo">
+            </a>
         </div>
         <div class="pics">
-            <div class="pic">
-                <img data-num="0" :src="room.imageUrl[0]" alt="room picture"> 
-            </div>
-            <div class="pic">
-                <img data-num="1" :src="room.imageUrl[1]" alt="room picture">
-            </div>
-            <div class="pic">
-                <img data-num="2" :src="room.imageUrl[2]" alt="room picture">
-            </div>
+            <div v-for="(item, id) in room.imageUrl" class="pic" v-bind:data-num="id" :style="{backgroundImage: 'url(' + item + ')'}"></div>
         </div>
-        <div class="container">
-            <div class="title">
-                {{ room.name }}
-            </div>
-            <div class="infos">
-                <span>房客人數限制：{{ room.descriptionShort.GuestMin }} - {{ room.descriptionShort.GuestMax }}</span>
-                <span>床型：{{ room.descriptionShort.Bed.length == 1 ? bed[room.descriptionShort.Bed[0]] : bed[room.descriptionShort.Bed[0]] + " x" + room.descriptionShort.Bed.length }}</span>
-                <span>衛浴數量：{{ room.descriptionShort["Private-Bath"] }}</span>
-                <span>房間大小：{{ room.descriptionShort.Footage }}平方公尺</span>
-            </div>
-            <div class="desc">
-                <span>{{ room.description }}</span>
-            </div>
-            <div class="slashes">
-                <div class="slash"></div>
-                <div class="slash"></div>
-                <div class="slash"></div>
-            </div>
-            <div class="check">
-                <div class="wrap">
-                    <span>Check in<span class="check_time">{{ room.checkInAndOut.checkInEarly }} - {{ room.checkInAndOut.checkInLate }}</span></span>
-                </div>
-                <div class="wrap">
-                    <span>Check out<span class="check_time">{{ room.checkInAndOut.checkOut }}</span></span>
-                </div>      
-            </div>
-            <div class="detail">
-                <ul>
-                    <li v-for="item in detail" :class="(item.isActive? '' : 'none')">
-                        <img :src="item.url" alt="icon">
-                        <span>{{ item.name }}</span>
-                    </li>    
-                </ul>
-            </div>
-        </div>
-        <div class="price">
-            <span class="normprice">NT.{{ room.normalDayPrice }}</span>
-            <span>平日(一~四)</span>
-            <span class="holiprice">NT.{{ room.holidayPrice }}</span>
-            <span>平日(五~日)</span>
-        </div>
-        <div class="reservation">
-            <div class="calendar">
-                <div class="title">
-                    <span id="calendar-year"></span>
-                    <span> / </span>
-                    <span id="calendar-month"></span>
-                    <a id="prev" href="">‹</a>
-                    <a id="next" href="">›</a>
-                </div>
-                <div class="body">
-                    <div class="body-list">
+        <div class="content-body">
+            <div class="row">
+                <div class="col-12 col-md-7 col-lg-6 content-box">
+                    <div class="title">
+                        {{ room.name }}
+                    </div>
+                    <div class="d-block d-md-none price">
+                        <span class="normprice">NT.{{ room.normalDayPrice }}</span>
+                        <span>平日(一~四)</span>
+                        <span class="holiprice">NT.{{ room.holidayPrice }}</span>
+                        <span>平日(五~日)</span>
+                    </div>
+                    <div class="infos">
+                        <span>房客人數限制：{{ room.descriptionShort.GuestMin }} - {{ room.descriptionShort.GuestMax }}</span>
+                        <span>床型：{{ room.descriptionShort.Bed.length == 1 ? bed[room.descriptionShort.Bed[0]] : bed[room.descriptionShort.Bed[0]] + " x" + room.descriptionShort.Bed.length }}</span>
+                        <span>衛浴數量：{{ room.descriptionShort["Private-Bath"] }}</span>
+                        <span>房間大小：{{ room.descriptionShort.Footage }}平方公尺</span>
+                    </div>
+                    <div class="desc">
+                        <span>{{ room.description }}</span>
+                    </div>
+                    <div class="slashes">
+                        <div class="slash"></div>
+                        <div class="slash"></div>
+                        <div class="slash"></div>
+                    </div>
+                    <div class="check">
+                        <div class="wrap">
+                            <span>Check in<span class="check_time">{{ room.checkInAndOut.checkInEarly }} - {{ room.checkInAndOut.checkInLate }}</span></span>
+                        </div>
+                        <div class="wrap">
+                            <span>Check out<span class="check_time">{{ room.checkInAndOut.checkOut }}</span></span>
+                        </div>      
+                    </div>
+                    <div class="detail">
                         <ul>
-                            <li>日</li>
-                            <li>一</li>
-                            <li>二</li>
-                            <li>三</li>
-                            <li>四</li>
-                            <li>五</li>
-                            <li>六</li>
+                            <li v-for="item in detail" :class="(item.isActive? '' : 'none')">
+                                <img :src="item.url" alt="icon">
+                                <span>{{ item.name }}</span>
+                            </li>    
                         </ul>
                     </div>
-                    <div class="body-list">
-                        <ul id="days"></ul>
+                </div>
+                <div class="d-none d-lg-block col-lg-2 price">
+                    <span class="normprice">NT.{{ room.normalDayPrice }}</span>
+                    <span>平日(一~四)</span>
+                    <span class="holiprice">NT.{{ room.holidayPrice }}</span>
+                    <span>平日(五~日)</span>
+                </div>
+                <div class="col-12 col-md-5 col-lg-4 reservation">         
+                    <div class="d-none d-md-block d-lg-none price">
+                        <span class="normprice">NT.{{ room.normalDayPrice }}</span>
+                        <span>平日(一~四)</span>
+                        <span class="holiprice">NT.{{ room.holidayPrice }}</span>
+                        <span>平日(五~日)</span>
+                    </div>
+                    <div class="reserv_wrap">
+                        <h3 class="d-block d-md-none">預約住宿日期</h3>
+                        <div class="calendar">
+                            <div class="title">
+                                <span id="calendar-year"></span>
+                                <span> / </span>
+                                <span id="calendar-month"></span>
+                                <a id="prev" href="">‹</a>
+                                <a id="next" href="">›</a>
+                            </div>
+                            <div class="body">
+                                <div class="body-list">
+                                    <ul>
+                                        <li>日</li>
+                                        <li>一</li>
+                                        <li>二</li>
+                                        <li>三</li>
+                                        <li>四</li>
+                                        <li>五</li>
+                                        <li>六</li>
+                                    </ul>
+                                </div>
+                                <div class="body-list">
+                                    <ul id="days"></ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="explain">
+                            <span>* 劃線的日期為已被預訂的日期，但仍可選擇該日為退房日</span>
+                        </div>
+                        <div class="buttons">
+                            <div id="reserv" class="button">預約時段</div>
+                            <div id="reset" class = button>重設時間</div>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="buttons">
-                <div id="reserv" class="button">預約時段</div>
-                <div id="reset" class = button>重設時間</div>
             </div>
         </div>
     </div>
