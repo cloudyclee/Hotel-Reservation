@@ -238,11 +238,11 @@ xhr.addEventListener("load", function(){
     var localMonth = my_month + 1 < 10 ? "0" + (my_month + 1) : my_month + 1;
     var localDate = my_day < 10 ? "0" + my_day : my_day;
 
-    function dayStart(month, year) {
+    function dayStart(month, year){
         var tmpDate = new Date(year, month, 1);
         return (tmpDate.getDay());
     };
-    function daysMonth(month, year) {
+    function daysMonth(month, year){
         var tmp = year % 4;
         if (tmp == 0) {
             return (month_olympic[month]);
@@ -250,7 +250,7 @@ xhr.addEventListener("load", function(){
             return (month_normal[month]);
         };
     };
-    function refreshDate () {
+    function refreshDate(){
         var str = "";
         // how many days that month
         var totalDay = daysMonth(my_month, my_year);
@@ -291,10 +291,16 @@ xhr.addEventListener("load", function(){
         // set booked days
         for (var i=0; i<booked_date.length; i++) {
             var booked = $("li[data-ymd='" + booked_date[i] + "']");
-            if (booked) {
+            if (booked && booked_date[i] >= my_date) {
                 booked.removeClass("days_non_past");
                 booked.addClass("days_not_selectable");
             };
+        };
+        for (var i=0; i<date.length; i++) {
+            var selected = $("li[data-ymd='" + date[i] + "']");
+            if (selected) {
+                selected.addClass("selectDay");
+            } 
         };
     };
     refreshDate();
@@ -343,7 +349,7 @@ xhr.addEventListener("load", function(){
         };
     };
     // get selected days array 
-    function getDateStr(startDate, endDate) {
+    function getDateStr(startDate, endDate){
 
         var str = [startDate];
         normal = 0;
@@ -370,7 +376,7 @@ xhr.addEventListener("load", function(){
         console.log(date);
     };
     // get target date string
-    function getTargetDate(date) {
+    function getTargetDate(date){
         var tempDate = new Date(date);
 
         var day = tempDate.getDay();
@@ -463,7 +469,7 @@ xhr.addEventListener("load", function(){
 
         // form validation
         // user name
-        $(document).on("blur", "#user_name", function(){
+        $(document).on("input", "#user_name", function(){
             var user_name = $("#user_name").val();
             if (!user_name) {
                 $("label[for='name']").css("margin-bottom", "0px");
@@ -474,7 +480,7 @@ xhr.addEventListener("load", function(){
             };
         });
         // tel
-        $(document).on("blur", "#tel", function(){
+        $(document).on("input", "#tel", function(){
             var tel = $("#tel").val();
             if (!tel) {
                 $("label[for='tel']").css("margin-bottom", "0px");
@@ -514,17 +520,39 @@ xhr.addEventListener("load", function(){
             };
         });
         // submit button disabled / operable
-        $("#user_name, #tel, #reserv_start, #reserv_end").on("blur", function(){
+        $("#user_name, #tel").on("input", function(){
             var user_name = $("#user_name").val();
             var tel = $("#tel").val();
-            console.log(user_name, tel, start, end)
         
             if (user_name && tel && start && end) {
                 if (tel.match(/^09[0-9]{8}$/)) {
                     $("#submit").removeAttr("disabled");
                     $("#submit").addClass("operable");
+                } else {
+                    $("#submit").attr("disabled", "true");
+                    $("#submit").removeClass("operable");
                 };  
+            } else {
+                $("#submit").attr("disabled", "true");
+                $("#submit").removeClass("operable");
             };
+        });
+        $("#reserv_start, #reserv_end").on("change", function(){
+            var user_name = $("#user_name").val();
+            var tel = $("#tel").val();
+        
+            if (user_name && tel && start && end) {
+                if (tel.match(/^09[0-9]{8}$/)) {
+                    $("#submit").removeAttr("disabled");
+                    $("#submit").addClass("operable");
+                } else {
+                    $("#submit").attr("disabled", "true");
+                    $("#submit").removeClass("operable");
+                };  
+            } else {
+                $("#submit").attr("disabled", "true");
+                $("#submit").removeClass("operable");
+            };  
         });
 
         // reservation function

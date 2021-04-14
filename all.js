@@ -50,6 +50,7 @@ xhr.addEventListener("load", function(){
     setTimeout(function(){
         $(".logo, .title, .room_list, .infos").css("opacity", "1");
         $(".logo, .title, .room_list, .infos").css("transform", "translateX(0px)");
+        $("body").css("overflow-y", "scroll");
     }, 300);
 
     // define hover

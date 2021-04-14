@@ -611,15 +611,11 @@ html, body
                     font-size: 14px
                     letter-spacing: 1.46px
                     cursor: pointer
-                    &:hover
-                        background-image: linear-gradient(45deg,#575757 0% 5%,transparent 5% 45%,#575757 45% 55%,transparent 55% 95%,#575757 95% 100%)
-                        background-size: 5px 5px
                 .today
                     outline: solid 1px #6D7278
                 .selectDay
                     background-image: linear-gradient(45deg,#575757 0% 5%,transparent 5% 45%,#575757 45% 55%,transparent 55% 95%,#575757 95% 100%)
-                    background-size: 5px 5px
-
+                    background-size: 5px 5px              
 
 @media screen and (max-width: 1140px)
     .content-box
@@ -675,3 +671,13 @@ html, body
             margin-bottom: 36px
         .buttons, .calendar
             width: 65%
+
+@media screen and (min-width: 768px)
+    .days_non_past
+        color: #6D7278
+        font-size: 14px
+        letter-spacing: 1.46px
+        cursor: pointer
+        &:hover
+            background-image: linear-gradient(45deg,#575757 0% 5%,transparent 5% 45%,#575757 45% 55%,transparent 55% 95%,#575757 95% 100%)
+            background-size: 5px 5px

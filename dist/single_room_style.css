@@ -886,11 +886,6 @@ html, body {
   cursor: pointer;
 }
 
-.reservation .calendar .body-list ul .days_non_past:hover {
-  background-image: linear-gradient(45deg, #575757 0% 5%, transparent 5% 45%, #575757 45% 55%, transparent 55% 95%, #575757 95% 100%);
-  background-size: 5px 5px;
-}
-
 .reservation .calendar .body-list ul .today {
   outline: solid 1px #6D7278;
 }
@@ -970,6 +965,19 @@ html, body {
   }
   .reservation .buttons, .reservation .calendar {
     width: 65%;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .days_non_past {
+    color: #6D7278;
+    font-size: 14px;
+    letter-spacing: 1.46px;
+    cursor: pointer;
+  }
+  .days_non_past:hover {
+    background-image: linear-gradient(45deg, #575757 0% 5%, transparent 5% 45%, #575757 45% 55%, transparent 55% 95%, #575757 95% 100%);
+    background-size: 5px 5px;
   }
 }
 /*# sourceMappingURL=single_room_style.css.map */

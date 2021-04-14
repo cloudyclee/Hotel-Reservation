@@ -8,7 +8,7 @@ html, body
     margin: 0px
     width: 100%
     height: auto
-    overflow: hidden
+    //overflow: hidden
 
 .loading
     position: absolute
@@ -260,8 +260,21 @@ html, body
             background-color: rgba(#FFF, 0.3)
             background-image: linear-gradient(45deg,#000 0% 5%,transparent 5% 45%,#000 45% 55%,transparent 55% 95%,#000 95% 100%)
         .select-box
+            display: inline-block
+            position: relative
+            &::after
+                content: "∨"
+                font-size: 14px
+                font-weight: 900
+                color: rgba(#000, 0.8)
+                line-height: 35px
+                position: absolute
+                pointer-events: none
+                margin-left: -10px
             select
+                appearance: none
                 background-color: transparent
+                text-align-last: center
                 padding: 5px 10px
                 border: none
                 color: rgba(#000, 0.8)
@@ -298,11 +311,15 @@ html, body
             .fb, .ig
                 background-color: rgba(#000, 0.3)
         .contact
-            left: 25%
+            display: flex
+            flex-direction: column
+            align-items: center
             margin-top: 20px
+            text-align: center
             .tel
                 margin-top: 0px
             .tel, .email, .address
+                left: 0px
                 color: rgba(#000, 0.8)
                 &::before
-                    background-color: rgba(#000, 0.3)
+                    display: none
