@@ -1,15 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@100;300;400;500;700;900&display=swap">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@100;300;400;500;700;900&display=swap">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/loaders.css/0.1.2/loaders.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css">
-    <link rel="stylesheet" href="./dist/single_room_style.css">
+    <link rel="stylesheet" href="./dist/singleRoom_style.css">
     <title></title>
 </head>
+
 <body>
     <div class="loading">
         <div class="loader-inner ball-spin-fade-loader"></div>
@@ -77,7 +80,7 @@
                     <div class="reserv_body">
                         <div class="message">
                             <img src="./index_icon/success.svg" alt="success">
-                        </div>    
+                        </div>
                     </div>
                     <div id="success" class="return_page operable">回頁面</div>
                 </div>
@@ -109,7 +112,8 @@
             </a>
         </div>
         <div class="pics">
-            <div v-for="(item, id) in room.imageUrl" class="pic" v-bind:data-num="id" :style="{backgroundImage: 'url(' + item + ')'}"></div>
+            <div v-for="(item, id) in room.imageUrl" class="pic" v-bind:data-num="id"
+                :style="{backgroundImage: 'url(' + item + ')'}"></div>
         </div>
         <div class="content-body">
             <div class="row">
@@ -125,7 +129,8 @@
                     </div>
                     <div class="infos">
                         <span>房客人數限制：{{ room.descriptionShort.GuestMin }} - {{ room.descriptionShort.GuestMax }}</span>
-                        <span>床型：{{ room.descriptionShort.Bed.length == 1 ? bed[room.descriptionShort.Bed[0]] : bed[room.descriptionShort.Bed[0]] + " x" + room.descriptionShort.Bed.length }}</span>
+                        <span>床型：{{ room.descriptionShort.Bed.length == 1 ? bed[room.descriptionShort.Bed[0]] :
+                            bed[room.descriptionShort.Bed[0]] + " x" + room.descriptionShort.Bed.length }}</span>
                         <span>衛浴數量：{{ room.descriptionShort["Private-Bath"] }}</span>
                         <span>房間大小：{{ room.descriptionShort.Footage }}平方公尺</span>
                     </div>
@@ -139,18 +144,19 @@
                     </div>
                     <div class="check">
                         <div class="wrap">
-                            <span>Check in<span class="check_time">{{ room.checkInAndOut.checkInEarly }} - {{ room.checkInAndOut.checkInLate }}</span></span>
+                            <span>Check in<span class="check_time">{{ room.checkInAndOut.checkInEarly }} - {{
+                                    room.checkInAndOut.checkInLate }}</span></span>
                         </div>
                         <div class="wrap">
                             <span>Check out<span class="check_time">{{ room.checkInAndOut.checkOut }}</span></span>
-                        </div>      
+                        </div>
                     </div>
                     <div class="detail">
                         <ul>
                             <li v-for="item in detail" :class="(item.isActive? '' : 'none')">
                                 <img :src="item.url" alt="icon">
                                 <span>{{ item.name }}</span>
-                            </li>    
+                            </li>
                         </ul>
                     </div>
                 </div>
@@ -160,7 +166,7 @@
                     <span class="holiprice">NT.{{ room.holidayPrice }}</span>
                     <span>平日(五~日)</span>
                 </div>
-                <div class="col-12 col-md-5 col-lg-4 reservation">         
+                <div class="col-12 col-md-5 col-lg-4 reservation">
                     <div class="d-none d-md-block d-lg-none price">
                         <span class="normprice">NT.{{ room.normalDayPrice }}</span>
                         <span>平日(一~四)</span>
@@ -199,7 +205,7 @@
                         </div>
                         <div class="buttons">
                             <div id="reserv" class="button">預約時段</div>
-                            <div id="reset" class = button>重設時間</div>
+                            <div id="reset" class=button>重設時間</div>
                         </div>
                     </div>
                 </div>
@@ -209,6 +215,7 @@
     <script src="https://unpkg.com/vue@next"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/loaders.css/0.1.2/loaders.css.js"></script>
-    <script src="single_room.js"></script>
+    <script src="singleRoom.js"></script>
 </body>
+
 </html>

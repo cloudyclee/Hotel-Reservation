@@ -1,22 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@100;300;400;500;700;900&display=swap">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@100;300;400;500;700;900&display=swap">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/loaders.css/0.1.2/loaders.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="./dist/style.css">
     <title>Home | White Space</title>
 </head>
+
 <body>
     <div class="loading">
         <div class="loader-inner ball-spin-fade-loader"></div>
     </div>
     <div id="app">
         <div class="content-box">
-            <div v-for="(item,id) in img" v-bind:data-num="id" :style="{backgroundImage: 'url(' + item + ')'}" :class="'room' + (id+1)"></div>
+            <div v-for="(item,id) in img" v-bind:data-num="id" :style="{backgroundImage: 'url(' + item + ')'}"
+                :class="'room' + (id+1)"></div>
             <div class="row">
                 <div class="col-12 col-md-6 text-center text-md-left">
                     <div class="logo show"><img src="./index_icon/logo_white.svg" alt="logo" /></div>
@@ -25,7 +29,9 @@
                     <div class="room_list show">
                         <ul class="rooms">
                             <li v-for="(item, id) in rooms" v-bind:data-id="id">
-                                <a :href="'room.html?room_id=' + item.id + '&amp;room_name=' + item.name">{{ item.name }}</a>
+                                <a :href="'singleRoom.html?room_id=' + item.id + '&amp;room_name=' + item.name">{{
+                                    item.name
+                                    }}</a>
                             </li>
                         </ul>
                         <div class="bar2"></div>
@@ -43,7 +49,7 @@
                                 <option v-for="(item, id) in rooms" v-bind:data-id="id">{{ item.name }}</option>
                             </select>
                         </div>
-                        <a :href="'room.html?room_id=' + room.id + '&amp;room_name=' + room.name">Book Now →</a>
+                        <a :href="'singleRoom.html?room_id=' + room.id + '&amp;room_name=' + room.name">Book Now →</a>
                     </div>
                 </div>
                 <div class="col-12 col-md-6 d-flex d-md-block justify-content-center">
@@ -67,4 +73,5 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/loaders.css/0.1.2/loaders.css.js"></script>
     <script src="./all.js"></script>
 </body>
+
 </html>
