@@ -17,7 +17,7 @@
 		
 ## 使用工具
 
-此專案使用 Sass 編寫 CSS，並使用 VSCode 套件匯出成 css 檔。另外，以 CDN 方式引入 Bootstrap 協助排版；引入 jQuery 完成網站互動行為、引入 Vue3 並使用其模板語法；最後是引入 loaders 套件處理 API 傳書資料時的等待畫面。
+此專案使用 Sass 編寫 CSS，並使用 VScode 套件匯出成 css 檔。另外，以 CDN 方式引入 Bootstrap 協助排版；引入 jQuery 完成網站互動行為、引入 Vue3 並使用其模板語法；最後是引入 loaders 套件處理 API 傳書資料時的等待畫面。
 
 ## 功能實現
 
